@@ -22,6 +22,14 @@ import PatientReports from '../pages/doctor/Reports/PatientReports'
 import CreateRecord from '../pages/doctor/MedicalRecords/CreateRecord'
 import ScheduleAppointment from '../pages/doctor/Appointments/ScheduleAppointment'
 
+
+//Importar componenetes del panel Paciente
+import EditProfile from '../pages/patient/Profile/EditProfile'
+import MyAppointments from '../pages/patient/Appointments/MyAppointments'
+import BookAppointment from '../pages/patient/Appointments/BookAppointment'
+import HistoryList from '../pages/patient/MedicalHistory/HistoryList'
+import HistoryDetail from '../pages/patient/MedicalHistory/HistoryDetail'
+
 // Importar componentes del Panel Admin
 import AdminDashboard from '../pages/admin/Dashboard'
 import UserList from '../pages/admin/Users/UserList'
@@ -41,10 +49,10 @@ const PatientDashboard = () => (
   </div>
 )
 
-const PatientAppointments = () => <div style={{ padding: '20px' }}>Mis Citas - En construcción</div>
-const PatientMedicalHistory = () => <div style={{ padding: '20px' }}>Historial Médico - En construcción</div>
+
+
 const PatientPrescriptions = () => <div style={{ padding: '20px' }}>Mis Recetas - En construcción</div>
-const PatientProfile = () => <div style={{ padding: '20px' }}>Mi Perfil - En construcción</div>
+
 
 // Placeholders para componentes restantes
 const AdminReports = () => <div style={{ padding: '20px' }}>Reportes - En construcción</div>
@@ -59,29 +67,44 @@ function AppRoutes() {
       {/* ==================== */}
       {/* RUTAS PANEL PACIENTE */}
       {/* ==================== */}
-      <Route path="/patient" element={
+     <Route path="/patient" element={
         <ProtectedRoute allowedRoles={['patient']}>
           <MainLayout>
             <PatientDashboard />
           </MainLayout>
         </ProtectedRoute>
       } />
-      
+
+      <Route path="/patient/appointments/new" element={ 
+        <ProtectedRoute allowedRoles={['patient']}>
+          <MainLayout>
+            <BookAppointment />
+          </MainLayout>
+        </ProtectedRoute>
+      } />
+
       <Route path="/patient/appointments" element={
         <ProtectedRoute allowedRoles={['patient']}>
           <MainLayout>
-            <PatientAppointments />
+            <MyAppointments />
           </MainLayout>
         </ProtectedRoute>
       } />
       
-      <Route path="/patient/medical-history" element={
+      <Route path="/patient/medicalhistory" element={
         <ProtectedRoute allowedRoles={['patient']}>
           <MainLayout>
-            <PatientMedicalHistory />
+            <HistoryList />
           </MainLayout>
         </ProtectedRoute>
       } />
+      <Route path="/patient/medicalhistory/:id" element={
+  <ProtectedRoute allowedRoles={['patient']}>
+    <MainLayout>
+      <HistoryDetail />
+    </MainLayout>
+  </ProtectedRoute>
+} />
       
       <Route path="/patient/prescriptions" element={
         <ProtectedRoute allowedRoles={['patient']}>
@@ -94,7 +117,7 @@ function AppRoutes() {
       <Route path="/patient/profile" element={
         <ProtectedRoute allowedRoles={['patient']}>
           <MainLayout>
-            <PatientProfile />
+            <EditProfile />
           </MainLayout>
         </ProtectedRoute>
       } />

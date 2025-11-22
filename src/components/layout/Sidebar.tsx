@@ -16,8 +16,8 @@ const Sidebar: React.FC = () => {
       patient: [
         ...baseItems,
         { icon: '📅', label: 'Mis Citas', path: '/patient/appointments' },
-        { icon: '📋', label: 'Historial Médico', path: '/patient/medical-history' },
-        { icon: '💊', label: 'Mis Recetas', path: '/patient/prescriptions' },
+        { icon: '📋', label: 'Historial Médico', path: '/patient/medicalhistory' },
+        { icon: '💊', label: 'Agendar Cita', path: '/patient/appointments/new' },
         { icon: '👤', label: 'Mi Perfil', path: '/patient/profile' }
       ],
       doctor: [
