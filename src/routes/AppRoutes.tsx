@@ -13,6 +13,17 @@ import AppointmentList from '../pages/doctor/Appointments/AppointmentList'
 import RecordList from '../pages/doctor/MedicalRecords/RecordList'
 import ViewRecord from '../pages/doctor/MedicalRecords/ViewRecord'
 
+// Importar componentes del Panel Admin
+import AdminDashboard from '../pages/admin/Dashboard'
+import UserList from '../pages/admin/Users/UserList'
+import UserDetail from '../pages/admin/Users/UserDetail'
+import CreateUser from '../pages/admin/Users/CreateUser'
+import GeneralStats from '../pages/admin/Statistics/GeneralStats'
+import AppointmentStats from '../pages/admin/Statistics/AppointmentStats'
+import TreatmentStats from '../pages/admin/Statistics/TreatmentStats'
+import SystemSettings from '../pages/admin/Settings/SystemSettings'
+import UserRoles from '../pages/admin/Settings/UserRoles'
+
 // Placeholders para otras páginas
 const DoctorPrescriptions = () => <div style={{ padding: '20px' }}>Recetas - En construcción</div>;
 const DoctorReports = () => <div style={{ padding: '20px' }}>Reportes - En construcción</div>;
@@ -30,17 +41,9 @@ const PatientMedicalHistory = () => <div style={{ padding: '20px' }}>Historial M
 const PatientPrescriptions = () => <div style={{ padding: '20px' }}>Mis Recetas - En construcción</div>;
 const PatientProfile = () => <div style={{ padding: '20px' }}>Mi Perfil - En construcción</div>;
 
-// Placeholders para Panel Admin
-const AdminDashboard = () => (
-  <div style={{ padding: '20px' }}>
-    <h1 style={{ color: '#2a4ea2' }}>Panel Administrativo</h1>
-    <p>Bienvenido al panel administrativo - En construcción</p>
-  </div>
-);
 
-const AdminUsers = () => <div style={{ padding: '20px' }}>Usuarios - En construcción</div>;
-const AdminStatistics = () => <div style={{ padding: '20px' }}>Estadísticas - En construcción</div>;
-const AdminSettings = () => <div style={{ padding: '20px' }}>Configuración - En construcción</div>;
+
+
 const AdminReports = () => <div style={{ padding: '20px' }}>Reportes - En construcción</div>;
 
 function AppRoutes() {
@@ -165,48 +168,108 @@ function AppRoutes() {
         </ProtectedRoute>
       } />
       
-      {/* =================== */}
-      {/* RUTAS PANEL ADMIN */}
-      {/* =================== */}
-      <Route path="/admin" element={
-        <ProtectedRoute allowedRoles={['admin']}>
-          <MainLayout>
-            <AdminDashboard />
-          </MainLayout>
-        </ProtectedRoute>
-      } />
-      
-      <Route path="/admin/users" element={
-        <ProtectedRoute allowedRoles={['admin']}>
-          <MainLayout>
-            <AdminUsers />
-          </MainLayout>
-        </ProtectedRoute>
-      } />
-      
-      <Route path="/admin/statistics" element={
-        <ProtectedRoute allowedRoles={['admin']}>
-          <MainLayout>
-            <AdminStatistics />
-          </MainLayout>
-        </ProtectedRoute>
-      } />
-      
-      <Route path="/admin/settings" element={
-        <ProtectedRoute allowedRoles={['admin']}>
-          <MainLayout>
-            <AdminSettings />
-          </MainLayout>
-        </ProtectedRoute>
-      } />
-      
-      <Route path="/admin/reports" element={
-        <ProtectedRoute allowedRoles={['admin']}>
-          <MainLayout>
-            <AdminReports />
-          </MainLayout>
-        </ProtectedRoute>
-      } />
+{/* =================== */}
+{/* RUTAS PANEL ADMIN */}
+{/* =================== */}
+<Route
+  path="/admin"
+  element={
+    <ProtectedRoute allowedRoles={['admin']}>
+      <MainLayout>
+        <AdminDashboard />
+      </MainLayout>
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin/users"
+  element={
+    <ProtectedRoute allowedRoles={['admin']}>
+      <MainLayout>
+        <UserList />
+      </MainLayout>
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin/users/create"
+  element={
+    <ProtectedRoute allowedRoles={['admin']}>
+      <MainLayout>
+        <CreateUser />
+      </MainLayout>
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin/users/:id"
+  element={
+    <ProtectedRoute allowedRoles={['admin']}>
+      <MainLayout>
+        <UserDetail />
+      </MainLayout>
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin/statistics"
+  element={
+    <ProtectedRoute allowedRoles={['admin']}>
+      <MainLayout>
+        <GeneralStats />
+      </MainLayout>
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin/statistics/appointments"
+  element={
+    <ProtectedRoute allowedRoles={['admin']}>
+      <MainLayout>
+        <AppointmentStats />
+      </MainLayout>
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin/statistics/treatments"
+  element={
+    <ProtectedRoute allowedRoles={['admin']}>
+      <MainLayout>
+        <TreatmentStats />
+      </MainLayout>
+    </ProtectedRoute>
+  }
+/>
+
+{/*se cambia SystemSettings por UserRoles, para la parte de configuración (ahora control de permisos y roles)*/  }
+<Route
+  path="/admin/settings"
+  element={
+    <ProtectedRoute allowedRoles={['admin']}>
+      <MainLayout>
+        <UserRoles />
+      </MainLayout>
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin/settings/roles"
+  element={
+    <ProtectedRoute allowedRoles={['admin']}>
+      <MainLayout>
+        <UserRoles />
+      </MainLayout>
+    </ProtectedRoute>
+  }
+/>
       
       {/* ==================== */}
       {/* RUTAS POR DEFECTO */}
