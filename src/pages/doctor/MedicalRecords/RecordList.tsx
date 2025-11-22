@@ -19,6 +19,7 @@ const RecordList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const navigate = useNavigate();
+  
 
   // Datos de ejemplo - historiales médicos
   const medicalRecords: MedicalRecord[] = [
@@ -181,22 +182,26 @@ const RecordList: React.FC = () => {
             <option value="closed">Cerrados</option>
           </select>
         </div>
-
-        <button style={{
-          padding: '10px 20px',
-          background: '#2a4ea2',
-          color: 'white',
-          border: 'none',
-          borderRadius: '8px',
-          fontWeight: '600',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px'
-        }}>
-          <span>➕</span>
-          Nuevo Historial
-        </button>
+        
+      
+          <button 
+            onClick={() => navigate('/doctor/medical-records/new')}
+            style={{
+              padding: '10px 20px',
+              background: '#2a4ea2',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}
+          >
+            <span>➕</span>
+            Nuevo Historial
+          </button>
       </div>
 
       {/* Estadísticas rápidas */}

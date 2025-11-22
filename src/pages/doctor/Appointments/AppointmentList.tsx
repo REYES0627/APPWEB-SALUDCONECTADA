@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Appointment {
   id: string;
@@ -13,6 +14,7 @@ interface Appointment {
 }
 
 const AppointmentList: React.FC = () => {
+  const navigate = useNavigate();
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -175,18 +177,21 @@ const AppointmentList: React.FC = () => {
           </select>
         </div>
 
-        <button style={{
-          padding: '10px 20px',
-          background: '#10b981',
-          color: 'white',
-          border: 'none',
-          borderRadius: '8px',
-          fontWeight: '600',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px'
-        }}>
+        <button 
+          onClick={() => navigate('/doctor/appointments/new')}
+          style={{
+            padding: '10px 20px',
+            background: '#10b981',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            fontWeight: '600',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}
+        >
           <span>➕</span>
           Nueva Cita
         </button>

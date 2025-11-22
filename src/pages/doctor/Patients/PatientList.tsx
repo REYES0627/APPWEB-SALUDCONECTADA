@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Patient {
   id: string;
@@ -12,6 +13,7 @@ interface Patient {
 
 const PatientList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
   
   // Datos de ejemplo
   const patients: Patient[] = [
@@ -103,18 +105,21 @@ const PatientList: React.FC = () => {
           </span>
         </div>
 
-        <button style={{
-          padding: '12px 24px',
-          background: '#2a4ea2',
-          color: 'white',
-          border: 'none',
-          borderRadius: '8px',
-          fontWeight: '600',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px'
-        }}>
+        <button 
+          onClick={() => navigate('/doctor/patients/new')}
+          style={{
+            padding: '12px 24px',
+            background: '#2a4ea2',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            fontWeight: '600',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}
+        >
           <span>➕</span>
           Nuevo Paciente
         </button>
@@ -222,18 +227,23 @@ const PatientList: React.FC = () => {
                 </td>
                 <td style={{ padding: '16px' }}>
                   <div style={{ display: 'flex', gap: '8px' }}>
-                    <button style={{
-                      padding: '6px 12px',
-                      background: '#e0f2fe',
-                      color: '#0369a1',
-                      border: 'none',
-                      borderRadius: '6px',
-                      fontSize: '12px',
-                      cursor: 'pointer'
-                    }}>
+                    <button 
+                      onClick={() => navigate(`/doctor/patients/${patient.id}`)}
+                      style={{
+                        padding: '6px 12px',
+                        background: '#e0f2fe',
+                        color: '#0369a1',
+                        border: 'none',
+                        borderRadius: '6px',
+                        fontSize: '12px',
+                        cursor: 'pointer'
+                      }}
+                    >
                       Ver
                     </button>
-                    <button style={{
+                    <button 
+                    onClick={() => navigate(`/doctor/patients/${patient.id}`)}
+                    style={{
                       padding: '6px 12px',
                       background: '#fef3c7', 
                       color: '#92400e',
@@ -241,9 +251,10 @@ const PatientList: React.FC = () => {
                       borderRadius: '6px',
                       fontSize: '12px',
                       cursor: 'pointer'
-                    }}>
-                      Editar
-                    </button>
+                    }}
+                  >
+                    Editar
+                  </button>
                   </div>
                 </td>
               </tr>

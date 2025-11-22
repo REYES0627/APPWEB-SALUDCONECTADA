@@ -1,8 +1,10 @@
 import React from 'react';
 import { useAuth } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const DoctorDashboard: React.FC = () => {
   const { user } = useAuth();
+  const navigate = useNavigate(); 
 
   // Datos de ejemplo para el dashboard
   const stats = {
@@ -270,26 +272,29 @@ const DoctorDashboard: React.FC = () => {
             ))}
           </div>
 
-          <button style={{
-            width: '100%',
-            marginTop: '20px',
-            padding: '12px',
-            background: 'transparent',
-            border: '2px solid #2a4ea2',
-            color: '#2a4ea2',
-            borderRadius: '8px',
-            fontWeight: '600',
-            cursor: 'pointer',
-            transition: 'all 0.2s'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = '#2a4ea2';
-            e.currentTarget.style.color = 'white';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.color = '#2a4ea2';
-          }}>
+          <button 
+            onClick={() => navigate('/doctor/schedule')}
+            style={{
+              width: '100%',
+              marginTop: '20px',
+              padding: '12px',
+              background: 'transparent',
+              border: '2px solid #2a4ea2',
+              color: '#2a4ea2',
+              borderRadius: '8px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.2s'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#2a4ea2';
+              e.currentTarget.style.color = 'white';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.color = '#2a4ea2';
+            }}
+          >
             Ver Agenda Completa
           </button>
         </div>
@@ -311,105 +316,115 @@ const DoctorDashboard: React.FC = () => {
           </h3>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <button style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              width: '100%',
-              padding: '15px',
-              background: '#f0f9ff',
-              border: '1px solid #bae6fd',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#0369a1'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#e0f2fe';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#f0f9ff';
-            }}>
+            <button 
+              onClick={() => navigate('/doctor/patients')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                width: '100%',
+                padding: '15px',
+                background: '#f0f9ff',
+                border: '1px solid #bae6fd',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                fontSize: '14px',
+                fontWeight: '500',
+                color: '#0369a1'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#e0f2fe';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#f0f9ff';
+              }}
+            >
               <span style={{ fontSize: '18px' }}>👥</span>
               Gestionar Pacientes
             </button>
 
-            <button style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              width: '100%',
-              padding: '15px',
-              background: '#f0fdf4',
-              border: '1px solid #bbf7d0',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#166534'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#dcfce7';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#f0fdf4';
-            }}>
+                        <button 
+              onClick={() => navigate('/doctor/appointments/new')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                width: '100%',
+                padding: '15px',
+                background: '#f0fdf4',
+                border: '1px solid #bbf7d0',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                fontSize: '14px',
+                fontWeight: '500',
+                color: '#166534'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#dcfce7';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#f0fdf4';
+              }}
+            >
               <span style={{ fontSize: '18px' }}>📅</span>
               Programar Cita
             </button>
 
-            <button style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              width: '100%',
-              padding: '15px',
-              background: '#fef7ed',
-              border: '1px solid #fed7aa',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#9a3412'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#ffedd5';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#fef7ed';
-            }}>
+                        <button 
+              onClick={() => navigate('/doctor/medical-records/new')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                width: '100%',
+                padding: '15px',
+                background: '#fef7ed',
+                border: '1px solid #fed7aa',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                fontSize: '14px',
+                fontWeight: '500',
+                color: '#9a3412'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#ffedd5';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#fef7ed';
+              }}
+            >
               <span style={{ fontSize: '18px' }}>📋</span>
               Nuevo Historial
             </button>
 
-            <button style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              width: '100%',
-              padding: '15px',
-              background: '#faf5ff',
-              border: '1px solid #e9d5ff',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#7c3aed'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#f3e8ff';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#faf5ff';
-            }}>
-              <span style={{ fontSize: '18px' }}>💊</span>
-              Emitir Receta
-            </button>
+                      <button style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            width: '100%',
+            padding: '15px',
+            background: '#faf5ff',
+            border: '1px solid #e9d5ff',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            transition: 'all 0.2s',
+            fontSize: '14px',
+            fontWeight: '500',
+            color: '#7c3aed'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = '#f3e8ff';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = '#faf5ff';
+          }}
+          onClick={() => window.location.href = '/doctor/prescriptions/new'}>
+            <span style={{ fontSize: '18px' }}>💊</span>
+            Emitir Receta
+          </button>
           </div>
         </div>
       </div>
