@@ -40,6 +40,7 @@ import AppointmentStats from '../pages/admin/Statistics/AppointmentStats'
 import TreatmentStats from '../pages/admin/Statistics/TreatmentStats'
 import SystemSettings from '../pages/admin/Settings/SystemSettings'
 import UserRoles from '../pages/admin/Settings/UserRoles'
+import AdminReports from '../pages/admin/Reports/Reports'
 
 // Placeholders para Panel Paciente
 const PatientDashboard = () => (
@@ -54,8 +55,8 @@ const PatientDashboard = () => (
 const PatientPrescriptions = () => <div style={{ padding: '20px' }}>Mis Recetas - En construcción</div>
 
 
-// Placeholders para componentes restantes
-const AdminReports = () => <div style={{ padding: '20px' }}>Reportes - En construcción</div>
+// Placeholders para componentes restantes (si es que se quiere poner componentes en un futuro)
+
 
 function AppRoutes() {
   return (

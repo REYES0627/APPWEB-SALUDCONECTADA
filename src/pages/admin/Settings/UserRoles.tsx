@@ -1,54 +1,68 @@
-// src/pages/admin/Settings/UserRoles.tsx
 import React from 'react';
+
+const cardShadow = '0 10px 30px rgba(15,23,42,0.12)';
 
 const UserRoles: React.FC = () => {
   const roles = [
     {
       name: 'Administrador',
       icon: '🛡️',
-      description: 'Control total del sistema.',
-      permissions: [
-        'Gestión de usuarios',
-        'Asignación de permisos',
-        'Acceso a estadísticas',
-        'Configuración del sistema',
-      ],
+      description: 'Control total del sistema y configuración.',
       color: '#2563eb',
+      permissions: [
+        'Gestión completa de usuarios',
+        'Definición de permisos y roles',
+        'Acceso a todas las estadísticas',
+        'Configuración general del sistema',
+      ],
     },
     {
       name: 'Médico',
       icon: '🩺',
       description: 'Gestión de pacientes y consultas.',
+      color: '#16a34a',
       permissions: [
         'Ver pacientes asignados',
         'Registrar diagnósticos',
-        'Gestionar agenda médica',
-        'Generar reportes clínicos',
+        'Actualizar tratamientos',
+        'Gestionar su agenda de citas',
       ],
-      color: '#16a34a',
     },
     {
       name: 'Paciente',
       icon: '👤',
-      description: 'Acceso a información personal.',
-      permissions: [
-        'Ver historial médico',
-        'Agendar citas',
-        'Ver recetas médicas',
-        'Actualizar datos personales',
-      ],
+      description: 'Acceso a información personal y citas.',
       color: '#7c3aed',
+      permissions: [
+        'Ver historial clínico propio',
+        'Agendar y cancelar citas',
+        'Ver recetas médicas',
+        'Actualizar datos de contacto',
+      ],
     },
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
       <div>
-        <h1 style={{ fontSize: '26px', margin: 0, color: '#111827' }}>
-          Control de permisos y roles
+        <h1
+          style={{
+            fontSize: 28,
+            margin: 0,
+            color: '#111827',
+            fontWeight: 700,
+          }}
+        >
+          Permisos y roles
         </h1>
-        <p style={{ fontSize: '13px', color: '#6b7280', marginTop: '4px' }}>
-          Define qué puede hacer cada tipo de usuario dentro de SaludConectada.
+        <p
+          style={{
+            fontSize: 14,
+            color: '#6b7280',
+            marginTop: 6,
+          }}
+        >
+          Define qué puede realizar cada tipo de usuario dentro del sistema.
         </p>
       </div>
 
@@ -56,7 +70,7 @@ const UserRoles: React.FC = () => {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '16px',
+          gap: 18,
         }}
       >
         {roles.map((role) => (
@@ -64,9 +78,9 @@ const UserRoles: React.FC = () => {
             key={role.name}
             style={{
               backgroundColor: '#ffffff',
-              borderRadius: '16px',
-              padding: '16px',
-              boxShadow: '0 3px 8px rgba(0,0,0,0.08)',
+              borderRadius: 20,
+              padding: 18,
+              boxShadow: cardShadow,
               borderTop: `4px solid ${role.color}`,
             }}
           >
@@ -74,16 +88,29 @@ const UserRoles: React.FC = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
-                marginBottom: '8px',
+                gap: 10,
+                marginBottom: 8,
               }}
             >
-              <span style={{ fontSize: '22px' }}>{role.icon}</span>
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 14,
+                  backgroundColor: `${role.color}20`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 22,
+                }}
+              >
+                {role.icon}
+              </div>
               <div>
                 <div
                   style={{
-                    fontSize: '16px',
-                    fontWeight: 600,
+                    fontSize: 16,
+                    fontWeight: 700,
                     color: '#111827',
                   }}
                 >
@@ -91,7 +118,7 @@ const UserRoles: React.FC = () => {
                 </div>
                 <div
                   style={{
-                    fontSize: '13px',
+                    fontSize: 13,
                     color: '#6b7280',
                   }}
                 >
@@ -102,14 +129,14 @@ const UserRoles: React.FC = () => {
 
             <ul
               style={{
-                fontSize: '13px',
+                fontSize: 13,
                 color: '#4b5563',
-                paddingLeft: '18px',
+                paddingLeft: 18,
                 margin: '8px 0 12px',
               }}
             >
               {role.permissions.map((perm) => (
-                <li key={perm}>✓ {perm}</li>
+                <li key={perm}>• {perm}</li>
               ))}
             </ul>
 
@@ -118,16 +145,17 @@ const UserRoles: React.FC = () => {
               style={{
                 width: '100%',
                 padding: '8px 0',
-                borderRadius: '999px',
+                borderRadius: 999,
                 border: `1px solid ${role.color}`,
                 backgroundColor: '#ffffff',
                 color: role.color,
-                fontSize: '13px',
+                fontSize: 14,
                 fontWeight: 600,
                 cursor: 'pointer',
+                transition: 'background-color 0.12s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#f3f4ff';
+                e.currentTarget.style.backgroundColor = `${role.color}10`;
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = '#ffffff';
